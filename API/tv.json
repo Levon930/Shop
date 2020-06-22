@@ -1,0 +1,80 @@
+[
+  {
+    "id": "7",
+    "categoryId": "1",
+    "name": "FOX SMART 32DLE178 LED, 32",
+    "price": 500,
+    "image": [
+      "https://static.tehnomanija.rs/UserFiles/products/126527.jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(1).jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(2).jpg"
+    ],
+    "size": "73.5 x 43.5 x 7 cm",
+    "display": "32 1366 x 768 px Led"
+  },
+  {
+    "id": "8",
+    "categoryId": "2",
+    "name": "Sony Smart televizor KDL49WE660BAEP",
+    "price": 953,
+    "image": [
+      "https://static.tehnomanija.rs/UserFiles/products/126527.jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(1).jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(2).jpg"
+    ],
+    "size": "110.2 x 65.0 x 7.0 cm",
+    "display": "49 1920 x 1080 px led"
+  },
+  {
+    "id": "9",
+    "categoryId": "2",
+    "name": "Sony Smart ",
+    "price": 953,
+    "image": [
+      "https://static.tehnomanija.rs/UserFiles/products/126527.jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(1).jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(2).jpg"
+    ],
+    "size": "110.2 x 65.0 x 7.0 cm",
+    "display": "49 1920 x 1080 px led"
+  },
+  {
+    "id": "10",
+    "categoryId": "1",
+    "name": "FOX SMART  LED, 32",
+    "price": 500,
+    "image": [
+      "https://static.tehnomanija.rs/UserFiles/products/126527.jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(1).jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(2).jpg"
+    ],
+    "size": "73.5 x 43.5 x 7 cm",
+    "display": "32 1366 x 768 px Led"
+  },
+  {
+    "id": "11",
+    "categoryId": "3",
+    "name": "LG SMART 32DLE178 LED, 32",
+    "price": 500,
+    "image": [
+      "https://static.tehnomanija.rs/UserFiles/products/126527.jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(1).jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(2).jpg"
+    ],
+    "size": "73.5 x 43.5 x 7 cm",
+    "display": "32 1366 x 768 px Led"
+  },
+  {
+    "id": "12",
+    "categoryId": "3",
+    "name": "LG 32DLE178 LED, 32",
+    "price": 500,
+    "image": [
+      "https://static.tehnomanija.rs/UserFiles/products/126527.jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(1).jpg",
+      "https://static.tehnomanija.rs/UserFiles/products/126527_(2).jpg"
+    ],
+    "size": "73.5 x 43.5 x 7 cm",
+    "display": "32 1366 x 768 px Led"
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "1",
+    "categoryId": "1",
+    "name": "Apple iPhone 5c",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    "price": 823,
+    "image": [
+      "https://media3.s-nbcnews.com/i/newscms/2020_18/3327876/41fjo9nnixl-5ea87098abb5d_22b048eb251530c04c93afda3c17a982.jpg",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-d?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-c?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-b?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020?fmt=pjpg&hei=520"
+    ],
+    "cpu": "1.3GHz Apple A6",
+    "camera": "8mp (3264x2448)",
+    "size": "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    "weight": "132 grams (4.7 ounces) with battery",
+    "display": "4.0 326 pixel density",
+    "battery": "1480 mAh",
+    "memory": "16GB, 32GB and RAM 1 GB"
+  },
+  {
+    "id": "2",
+    "categoryId": "1",
+    "name": "Apple iPhone 6",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    "price": 953,
+    "image": [
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MXYJ2_AV3_GEO_US?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1586880594811",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-d?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-c?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-b?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020?fmt=pjpg&hei=520"
+    ],
+    "cpu": "1.3GHz Apple A6",
+    "camera": "8mp (3264x2448)",
+    "size": "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    "weight": "132 grams (4.7 ounces) with battery",
+    "display": "4.0 326 pixel density",
+    "battery": "1480 mAh",
+    "memory": "16GB, 32GB and RAM 1 GB"
+  },
+  {
+    "id": "3",
+    "categoryId": "4",
+    "name": "Lenovo A6000",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    "price": 764,
+    "image": [
+      "https://underarmour.scene7.com/is/image/Underarmour/1331405-056_ab?template=v65GridSmallRetina&$size=270,331&$wid=300&$hei=368",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-d?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-c?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-b?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020?fmt=pjpg&hei=520"
+    ],
+    "cpu": "1.3GHz Apple A6",
+    "camera": "8mp (3264x2448)",
+    "size": "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    "weight": "132 grams (4.7 ounces) with battery",
+    "display": "4.0 326 pixel density",
+    "battery": "1480 mAh",
+    "memory": "16GB, 32GB and RAM 1 GB"
+  },
+  {
+    "id": "4",
+    "categoryId": "5",
+    "name": "Nokia Lumia 1520",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    "price": 674,
+    "image": [
+      "https://media.wired.com/photos/5e6195bf27fd0c00095be303/master/w_2400,h_1799,c_limit/Gear-tech21-Studio-Colour-case-SOURCE-tech21.jpg",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-d?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-c?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-b?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020?fmt=pjpg&hei=520"
+    ],
+    "cpu": "1.3GHz Apple A6",
+    "camera": "8mp (3264x2448)",
+    "size": "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    "weight": "132 grams (4.7 ounces) with battery",
+    "display": "4.0 326 pixel density",
+    "battery": "1480 mAh",
+    "memory": "16GB, 32GB and RAM 1 GB"
+  },
+  {
+    "id": "5",
+    "categoryId": "3",
+    "name": "HTC One",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    "price": 674,
+    "image": [
+      "https://res.cloudinary.com/teepublic/image/private/s--iq7uvPwd--/c_crop,x_10,y_10/c_fit,w_521/c_crop,g_north_west,h_1100,w_554,x_-17,y_-187/l_upload:v1452885561:production:blanks:gawvl5gka1pqwssxidw5/fl_layer_apply,g_north_west,x_-378,y_-264/b_rgb:42332c/c_limit,f_jpg,h_630,q_90,w_630/v1446074977/production/designs/16469_0.jpg",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-d?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-c?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-b?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020?fmt=pjpg&hei=520"
+    ],
+    "cpu": "1.3GHz Apple A6",
+    "camera": "8mp (3264x2448)",
+    "size": "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    "weight": "132 grams (4.7 ounces) with battery",
+    "display": "4.0 326 pixel density",
+    "battery": "1480 mAh",
+    "memory": "16GB, 32GB and RAM 1 GB"
+  },
+  {
+    "id": "6",
+    "categoryId": "2",
+    "name": "Samsung Galaxy S6",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    "price": 674,
+    "image": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFUMMigaEiF_wdVbnkMTQ2CSiUI7OCVzmTxD7A77oPcLfZhxoT&s",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-d?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-c?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020-b?fmt=pjpg&hei=520",
+      "https://ss7.vzw.com/is/image/VerizonWireless/apple-iphone-se-2020-black-04152020?fmt=pjpg&hei=520"
+    ],
+    "cpu": "1.3GHz Apple A6",
+    "camera": "8mp (3264x2448)",
+    "size": "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    "weight": "132 grams (4.7 ounces) with battery",
+    "display": "4.0 326 pixel density",
+    "battery": "1480 mAh",
+    "memory": "16GB, 32GB and RAM 1 GB"
+  }
+]
