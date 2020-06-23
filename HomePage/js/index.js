@@ -66,20 +66,27 @@ const CreatePhones = (item) => {
 
   phon.innerHTML = `
   <div data-id ='${id}'>
-      <img src="../images/logo/download.png" alt="" class = 'logo' 
-      data-id ='${id}' 
-      data-categoryId='${categoryId}'
-        data-name = "${name}"
-       data-price= "${price}"
-       data-image = "${image[0]}"
-      >
-      <img src="../images/logo/сирт.png" alt="" class = 'logo1' 
+  <button 
+  class = 'logo'
+  data-id ='${id}' 
+  data-categoryId='${categoryId}'
+    data-name = "${name}"
+   data-price= "${price}"
+   data-image = "${image[0]}"
+  >
+      <img src="../images/logo/download.png" alt="" >
+      </button>
+      <button 
+      class = 'logo1' 
       data-id ='${id}' 
       data-categoryId='${categoryId}'
       data-name = "${name}"
       data-price= "${price}"
       data-image = "${image[0]}"
       >
+      <img src="../images/logo/сирт.png" alt="" 
+     
+      ></button>
       <img src="${image[0]}" alt="logo" class ="phonImg">
       <p>${name}</p>
       <p>${price}<span>$</span></p>
@@ -107,20 +114,26 @@ const CreateTv = (item) => {
 
   phon.innerHTML = `
     <div data-id ='${id}'>
-      <img src="../images/logo/download.png" alt=""
-       class = 'logo' data-id = '${id}' 
-       data-categoryId = '${categoryId}'
-       data-name = "${name}"
-       data-price= "${price}"
-       data-image = "${image[0]}"
-       />
-      <img src="../images/logo/сирт.png" alt="" class = 'logo1'
+  <button class = 'logo'
+  data-id = '${id}' 
+  data-categoryId = '${categoryId}'
+  data-name = "${name}"
+  data-price= "${price}"
+  data-image = "${image[0]}"
+  >   
+   <img src="../images/logo/download.png" alt=""
+       
+       /></button>
+       <button class = 'logo1'
        data-id ='${id}'
         data-categoryId='${categoryId}'
         data-name = "${name}"
        data-price= "${price}"
        data-image = ${image[0]}
-        />
+       >
+      <img src="../images/logo/сирт.png" alt="" 
+       
+        /></button>
       <img src="${image[0]}" alt="logo" class ="phonImg">
       <p>${name}</p>
       <p>${price}<span>$</span></p>
@@ -164,25 +177,30 @@ function Basket() {
   const basketLine = document.querySelector(".bask");
   const likeLine = document.querySelector(".like");
   const selectedProd = document.querySelector(".selectedProd");
+
   likeLine.innerHTML = `${localStorage.getItem("countLike")} pc`;
   basketLine.innerHTML = `${localStorage.getItem("countBasketPrice")} $`;
-
+  selectedProd.addEventListener("click", (e) => e.stopPropagation());
   const ObjBasket = [];
   const ObjLike = [];
   //price conuter
   function counterPrice(obj) {
+    basketLine.innerHTML = "";
     let countBasketPrice = obj.reduce((sum, akk) => {
-      return sum + akk.price;
+      return parseInt(sum) + parseInt(akk.price);
     }, 0);
     console.log(countBasketPrice);
 
     localStorage.setItem("countBasketPrice", countBasketPrice);
+    basketLine.innerHTML = "";
     basketLine.innerHTML = `${localStorage.getItem("countBasketPrice")} $`;
   }
   //like counter
   function counterLike(obj) {
+    likeLine.innerHTML = "";
+
     let countLike = obj.reduce((sum, cur) => {
-      return sum + cur.counter;
+      return sum + parseInt(cur.counter);
     }, 0);
     console.log(countLike);
 
@@ -333,9 +351,9 @@ function Basket() {
     });
   });
   const clearItem = (obj, prop) => {
-    const clearItem = document.querySelectorAll(".clearItem");
+    const clearIt = document.querySelectorAll(".clearItem");
 
-    clearItem.forEach((elem) => {
+    clearIt.forEach((elem) => {
       elem.addEventListener("click", (e) => {
         e.stopPropagation();
 
@@ -358,7 +376,7 @@ function Basket() {
               JSON.parse(localStorage.getItem(prop)),
               selectedProd
             );
-
+            clearItem(obj, prop);
             return obj;
           }
         });
