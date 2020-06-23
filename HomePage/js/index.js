@@ -196,7 +196,7 @@ function Basket() {
   <img src="${image}" alt="logo" class ="phonImg">
   <p>${name}</p>
   <p>${counter}</p>
-  <p>${price}</p>
+  <p>${price} $</p>
 
   
 </div>
@@ -208,22 +208,25 @@ function Basket() {
   basketBt.forEach((elem) => {
     elem.addEventListener("click", () => {
       const { name, image, price, id } = elem.dataset;
-
+      let bull = true;
       if (ObjBasket.length !== 0) {
         ObjBasket.forEach((item) => {
           if (item.id === id) {
             ++item.counter;
             item.price = +item.price + parseInt(price);
-          } else {
-            ObjBasket.push({
-              id,
-              price,
-              name,
-              image,
-              counter: 1,
-            });
+            bull = false;
+            return null;
           }
         });
+        if (bull) {
+          ObjBasket.push({
+            id,
+            price,
+            name,
+            image,
+            counter: 1,
+          });
+        }
       } else {
         ObjBasket.push({
           id,
@@ -272,21 +275,25 @@ function Basket() {
   likeBt.forEach((elem) => {
     elem.addEventListener("click", () => {
       const { name, image, price, id } = elem.dataset;
-
+      let bull = true;
       if (ObjLike.length !== 0) {
         ObjLike.forEach((item) => {
           if (item.id === id) {
             item.counter++;
-          } else {
-            ObjLike.push({
-              id,
-              price,
-              name,
-              image,
-              counter: 1,
-            });
+            item.price = +item.price + parseInt(price);
+            bull = false;
+            return null;
           }
         });
+        if (bull) {
+          ObjLike.push({
+            id,
+            price,
+            name,
+            image,
+            counter: 1,
+          });
+        }
       } else {
         ObjLike.push({
           id,
