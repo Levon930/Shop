@@ -164,20 +164,31 @@ function Basket() {
   const basketLine = document.querySelector(".bask");
   const likeLine = document.querySelector(".like");
   const selectedProd = document.querySelector(".selectedProd");
-  let countBasketPrice = 0;
-  let countLike = 0;
+  likeLine.innerHTML = `${localStorage.getItem("countLike")} pc`;
+  basketLine.innerHTML = `${localStorage.getItem("countBasketPrice")} $`;
 
   const ObjBasket = [];
   const ObjLike = [];
   //price conuter
-  function counterPrice(price) {
-    countBasketPrice += parseInt(price);
-    basketLine.innerHTML = `${countBasketPrice} $`;
+  function counterPrice(obj) {
+    let countBasketPrice = obj.reduce((sum, akk) => {
+      return sum + akk.price;
+    }, 0);
+    console.log(countBasketPrice);
+
+    localStorage.setItem("countBasketPrice", countBasketPrice);
+    basketLine.innerHTML = `${localStorage.getItem("countBasketPrice")} $`;
   }
   //like counter
-  function counterLike(id) {
-    countLike++;
-    likeLine.innerHTML = `${countLike} pc`;
+  function counterLike(obj) {
+    let countLike = obj.reduce((sum, cur) => {
+      return sum + cur.counter;
+    }, 0);
+    console.log(countLike);
+
+    localStorage.setItem("countLike", countLike);
+
+    likeLine.innerHTML = `${localStorage.getItem("countLike")} pc`;
   }
   // creat Element in Basket && like
   const apenderElementBasket = (obj, apnding) => {
@@ -191,15 +202,19 @@ function Basket() {
 
     const elem = document.createElement("div");
     elem.innerHTML = `
+   
 <div data-id ='${id}' class = 'basketElem'>
+<button class ="clearItem" data-id ='${id}'><i class="fas fa-times"></i></button>
   
   <img src="${image}" alt="logo" class ="phonImg">
   <p>${name}</p>
   <p>${counter}</p>
   <p>${price} $</p>
+  <button class="buy" data-id ="${id}" data-counter="${counter}"></button>
 
   
 </div>
+
 
 `;
     return elem;
@@ -236,9 +251,9 @@ function Basket() {
           counter: 1,
         });
       }
+      localStorage.setItem("basket", JSON.stringify(ObjBasket));
 
-      console.log(ObjBasket);
-      counterPrice(price);
+      counterPrice(JSON.parse(localStorage.getItem("basket")));
     });
   });
 
@@ -247,8 +262,13 @@ function Basket() {
 
   basketClick.addEventListener("click", (e) => {
     e.stopPropagation();
-    console.log("mtav");
-    apenderElementBasket(ObjBasket, selectedProd);
+
+    apenderElementBasket(
+      JSON.parse(localStorage.getItem("basket")),
+      selectedProd
+    );
+    clearItem(JSON.parse(localStorage.getItem("basket")), "basket");
+
     if (!selectedProd.classList.contains("block")) {
       selectedProd.classList.add("block");
     } else {
@@ -259,7 +279,11 @@ function Basket() {
   likeClick.addEventListener("click", (e) => {
     e.stopPropagation();
     console.log("mtav");
-    apenderElementBasket(ObjLike, selectedProd);
+    apenderElementBasket(
+      JSON.parse(localStorage.getItem("like")),
+      selectedProd
+    );
+    clearItem(JSON.parse(localStorage.getItem("like")), "like");
     if (!selectedProd.classList.contains("block")) {
       selectedProd.classList.add("block");
     } else {
@@ -303,9 +327,42 @@ function Basket() {
           counter: 1,
         });
       }
-      console.log(ObjLike);
+      localStorage.setItem("like", JSON.stringify(ObjLike));
 
-      counterLike(id);
+      counterLike(JSON.parse(localStorage.getItem("like")));
     });
   });
+  const clearItem = (obj, prop) => {
+    const clearItem = document.querySelectorAll(".clearItem");
+
+    clearItem.forEach((elem) => {
+      elem.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        const { id } = elem.dataset;
+        obj.map((item, index) => {
+          console.log(obj);
+          console.log(id);
+
+          if (item.id === id) {
+            console.log("aa");
+
+            obj.splice(index, 1);
+            console.log("kkk");
+
+            localStorage.setItem(prop, JSON.stringify(obj));
+            selectedProd.innerHTML = "";
+            counterLike(JSON.parse(localStorage.getItem("like")));
+            counterPrice(JSON.parse(localStorage.getItem("basket")));
+            apenderElementBasket(
+              JSON.parse(localStorage.getItem(prop)),
+              selectedProd
+            );
+
+            return obj;
+          }
+        });
+      });
+    });
+  };
 }

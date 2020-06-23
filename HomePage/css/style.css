@@ -155,6 +155,9 @@ header button {
   align-items: center;
   color: black;
 }
+main {
+  margin-bottom: 10px;
+}
 iframe {
   width: 100%;
   opacity: 0, 1;
@@ -199,6 +202,10 @@ footer {
 }
 .block {
   display: block;
+}
+.buttonClear {
+  width: 50px;
+  margin-left: 50%;
 }
 @keyframes anim {
   0% {
