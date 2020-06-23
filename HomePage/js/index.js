@@ -121,7 +121,7 @@ const CreateTv = (item) => {
   data-price= "${price}"
   data-image = "${image[0]}"
   >   
-   <img src="../images/logo/download.png" alt=""
+   <img src="../images/logo/download.png" alt="logo"
        
        /></button>
        <button class = 'logo1'
@@ -131,7 +131,7 @@ const CreateTv = (item) => {
        data-price= "${price}"
        data-image = ${image[0]}
        >
-      <img src="../images/logo/сирт.png" alt="" 
+      <img src="../images/logo/сирт.png" alt="logo" 
        
         /></button>
       <img src="${image[0]}" alt="logo" class ="phonImg">
@@ -181,15 +181,14 @@ function Basket() {
   likeLine.innerHTML = `${localStorage.getItem("countLike")} pc`;
   basketLine.innerHTML = `${localStorage.getItem("countBasketPrice")} $`;
   selectedProd.addEventListener("click", (e) => e.stopPropagation());
-  const ObjBasket = [];
-  const ObjLike = [];
+  let ObjBasket = [];
+  let ObjLike = [];
   //price conuter
   function counterPrice(obj) {
     basketLine.innerHTML = "";
     let countBasketPrice = obj.reduce((sum, akk) => {
       return parseInt(sum) + parseInt(akk.price);
     }, 0);
-    console.log(countBasketPrice);
 
     localStorage.setItem("countBasketPrice", countBasketPrice);
     basketLine.innerHTML = "";
@@ -202,7 +201,6 @@ function Basket() {
     let countLike = obj.reduce((sum, cur) => {
       return sum + parseInt(cur.counter);
     }, 0);
-    console.log(countLike);
 
     localStorage.setItem("countLike", countLike);
 
@@ -296,7 +294,7 @@ function Basket() {
   });
   likeClick.addEventListener("click", (e) => {
     e.stopPropagation();
-    console.log("mtav");
+
     apenderElementBasket(
       JSON.parse(localStorage.getItem("like")),
       selectedProd
@@ -358,28 +356,26 @@ function Basket() {
         e.stopPropagation();
 
         const { id } = elem.dataset;
-        obj.map((item, index) => {
-          console.log(obj);
-          console.log(id);
-
+        obj.forEach((item, index) => {
           if (item.id === id) {
-            console.log("aa");
-
             obj.splice(index, 1);
-            console.log("kkk");
-
-            localStorage.setItem(prop, JSON.stringify(obj));
-            selectedProd.innerHTML = "";
-            counterLike(JSON.parse(localStorage.getItem("like")));
-            counterPrice(JSON.parse(localStorage.getItem("basket")));
-            apenderElementBasket(
-              JSON.parse(localStorage.getItem(prop)),
-              selectedProd
-            );
-            clearItem(obj, prop);
-            return obj;
           }
         });
+
+        localStorage.setItem(prop, JSON.stringify(obj));
+        selectedProd.innerHTML = "";
+        if (prop === "like") {
+          ObjLike = [...obj];
+          counterLike(JSON.parse(localStorage.getItem("like")));
+        } else {
+          counterPrice(JSON.parse(localStorage.getItem("basket")));
+          ObjBasket = [...obj];
+        }
+        apenderElementBasket(
+          JSON.parse(localStorage.getItem(prop)),
+          selectedProd
+        );
+        clearItem(obj, prop);
       });
     });
   };
