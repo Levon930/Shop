@@ -1,0 +1,57 @@
+body {
+  background-color: gray;
+}
+.Imgelem {
+  width: 200px;
+}
+.prod,
+nav {
+  z-index: 10;
+}
+.imageProd {
+}
+.logo,
+.logo1 {
+  width: 30px;
+  height: 30px;
+  left: 80%;
+  border-color: transparent;
+  background-color: transparent;
+}
+.logo1 {
+  top: 25%;
+}
+.logo {
+  top: 10%;
+}
+.elemProduct {
+  padding: 10px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.elemProduct p {
+  max-width: 200px;
+}
+.TvContent {
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 940px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.controlers {
+  display: flex;
+  justify-content: space-around;
+  min-width: 100px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.controlers button {
+  padding: 5px;
+  color: white;
+  background-color: transparent;
+}
+.tv {
+}

@@ -23,98 +23,57 @@ body.addEventListener("click", () => {
   drobDawn.classList.remove("block", "navScrin");
 });
 
-//main slaydbar
-const links = [
-  "http://cdn.home-designing.com/wp-content/uploads/2018/04/designer-lamps.jpg",
-  "https://i0.wp.com/see.news/wp-content/uploads/2020/04/Apple-iPhone-SE-2.jpg?resize=750%2C375&ssl=1",
-  "https://kod.ru/content/images/size/w700/2020/04/IMG_20200413_170359_382-01.jpeg",
-];
-const slaydButt = document.querySelectorAll(".buttons button");
-const image = document.querySelector(".poster");
+const buttonsSort = document.querySelectorAll(".controlers button");
 
-slaydButt.forEach((elem, index) => {
-  elem.addEventListener("click", () => {
-    image.src = links[index];
-  });
-});
-let a = 0;
-image.addEventListener("click", () => {
-  console.log(a);
-
-  if (a !== links.length - 1) {
-    image.src = links[++a];
-  } else {
-    a = 0;
-    image.src = links[a];
-  }
-});
-//main phones
-const phones = document.querySelector(".phones");
-const GetPhons = async (url) => {
-  const response = await fetch(url);
-  const data = await response.json();
-
-  data.forEach((item) => {
-    let exemple = CreatePhones(item);
-    phones.append(exemple);
-  });
-};
-const CreatePhones = (item) => {
-  const { name, image, price, id, categoryId } = item;
-  const phon = document.createElement("div");
-  phon.classList.add("phone", "slider__item");
-
-  phon.innerHTML = `
-  <div data-id ='${id}'  class ='elemId' data-type='phone'>
-  <button 
-  class = 'logo'
-  data-id ='${id}' 
-  data-categoryId='${categoryId}'
-    data-name = "${name}"
-   data-price= "${price}"
-   data-image = "${image[0]}"
-  >
-      <img src="../images/logo/download.png" alt="" >
-      </button>
-      <button 
-      class = 'logo1' 
-      data-id ='${id}' 
-      data-categoryId='${categoryId}'
-      data-name = "${name}"
-      data-price= "${price}"
-      data-image = "${image[0]}"
-      >
-      <img src="../images/logo/сирт.png" alt="" 
-     
-      ></button>
-      <img src="${image[0]}" alt="logo" class ="phonImg">
-      <p>${name}</p>
-      <p>${price}<span>$</span></p>
-    </div>
-`;
-  return phon;
-};
-//tv slayd
-const tv = document.getElementById("tvs");
+const tv = document.querySelector(".TvContent");
 const GetTv = async (url) => {
   const response = await fetch(url);
   const data = await response.json();
-
+  //flitr in lg
+  buttonsSort[0].addEventListener("click", () => {
+    filterPr(data, "3");
+  });
+  //filter in sony
+  buttonsSort[1].addEventListener("click", () => {
+    filterPr(data, "2");
+  });
+  //filter in samsung
+  buttonsSort[2].addEventListener("click", () => {
+    filterPr(data, "1");
+  });
+  buttonsSort[3].addEventListener("click", () => {
+    const sortData = SortPrice(data);
+    tv.innerHTML = "";
+    sortData.forEach((item) => {
+      let exemple = CreateTv(item);
+      tv.append(exemple);
+      Basket();
+    });
+  });
   await data.forEach((item) => {
     let exemple = CreateTv(item);
     tv.append(exemple);
   });
-  await slick();
-  await Basket("logo", "logo1");
-  await clickEleme();
+
+  await Basket();
+};
+const filterPr = (data, id) => {
+  const newData = data.filter((item) => item.categoryId === id);
+  tv.innerHTML = "";
+  newData.forEach((item) => {
+    let lg = CreateTv(item);
+    tv.append(lg);
+    Basket();
+  });
 };
 const CreateTv = (item) => {
   const { name, image, price, id, categoryId } = item;
   const phon = document.createElement("div");
-  phon.classList.add("tv", "slider__item", "filter");
+  phon.classList.add("tv");
 
   phon.innerHTML = `
-    <div data-id ='${id}' class ='elemId' data-type='tv'>
+    <div data-id ='${id}' class = 'elemProduct'>
+    <div class='imageProd'>
   <button class = 'logo'
   data-id = '${id}' 
   data-categoryId = '${categoryId}'
@@ -135,61 +94,26 @@ const CreateTv = (item) => {
       <img src="../images/logo/сирт.png" alt="logo" 
        
         /></button>
-      <img src="${image[0]}" alt="logo" class ="phonImg">
+
+      <img src="${image[0]}" alt="logo" class ="Imgelem">
+      </div>
+      <div>
       <p>${name}</p>
       <p>${price}<span>$</span></p>
+      
+      </div>
     </div>
   
 `;
   return phon;
 };
-function Hashchange() {
-  const hash = location.hash ? location.hash.slice(1) : "";
-  const param = hash.split("/#");
-
-  if (param[0] === "phone") {
-    GetInfo("../../API/phones.json", param[1]);
-  } else if ((param[0] === "tv", param[1])) {
-    GetInfo("../../API/tv.json", param[1]);
-  } else {
-    main.classList.remove("unbox");
-    productInfos.classList.remove("block");
-  }
-}
 window.addEventListener("DOMContentLoaded", () => {
-  GetPhons("../../API/phones.json");
   GetTv("../../API/tv.json");
-  Hashchange();
 });
-//slayder
-function slick() {
-  $(".slider").slick({
-    arrows: true,
-    dots: true,
-    slidesToShow: 3,
-    autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 800,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  });
-}
 
-function Basket(bt1, bt2) {
-  const basketBt = document.querySelectorAll(`.${bt1}`);
-  const likeBt = document.querySelectorAll(`.${bt2}`);
+function Basket() {
+  const basketBt = document.querySelectorAll(".logo");
+  const likeBt = document.querySelectorAll(".logo1");
   const basketLine = document.querySelector(".bask");
   const likeLine = document.querySelector(".like");
   const selectedProd = document.querySelector(".selectedProd");
@@ -253,9 +177,7 @@ function Basket(bt1, bt2) {
   };
   //basket inspekt elem function
   basketBt.forEach((elem) => {
-    elem.addEventListener("click", (e) => {
-      e.stopPropagation();
-      console.log("mt");
+    elem.addEventListener("click", () => {
       const { name, image, price, id } = elem.dataset;
       let bull = true;
       if (ObjBasket.length !== 0) {
@@ -331,8 +253,7 @@ function Basket(bt1, bt2) {
   });
   //like inspect elem function
   likeBt.forEach((elem) => {
-    elem.addEventListener("click", (e) => {
-      e.stopPropagation();
+    elem.addEventListener("click", () => {
       const { name, image, price, id } = elem.dataset;
       let bull = true;
       if (ObjLike.length !== 0) {
@@ -399,100 +320,7 @@ function Basket(bt1, bt2) {
     });
   };
 }
-let productInfos = document.querySelector(".productInfo");
-const main = document.querySelector("main");
-const GetInfo = async (url, id) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  const findId = await filterProducts(data, id);
-  const elem = await paintProduct(findId);
-  productInfos.innerHTML = "";
-  await productInfos.append(elem);
-  await eventer();
-  await selectBox();
-  await Basket("logoBk", "logoLk");
-};
-const filterProducts = (data, id) => {
-  return data.find((item) => item.id === id);
-};
-const paintProduct = (data) => {
-  const element = document.createElement("div");
-  const { price, name, id, categoryId, size, display, image } = data;
-  element.innerHTML = `
-  <div class="infProd" data-id =${id} data-categoryId =${categoryId}>
-    <div class="imagess">
-        <img src=${image[0]} alt="img" class="bigImage">
-        <div class="smallImages">
-            <img src=${image[0]} alt="log" >
-            <img src=${image[1]} alt="log" >
-            <img src=${image[2]} alt="log">
-        </div>
-    </div>
-    <div class="infos">
-        <p><span> NAME: </span>${name}</p>
-        <p><span> PRICE:</span> ${price}$</p>
-        <p><span> SIZE:</span> ${size}</p>
-        <p><span> DISPLAY:</span>${display}</p>
-        <div class="buttonss">
-          <button class=".logoBk"
-          data-id ='${id}' 
-          data-categoryId='${categoryId}'
-            data-name = "${name}"
-           data-price= "${price}"
-           data-image = "${image[0]}"
-          ><img src="../images/logo/download.png" alt=""></button>
-          <button class=".logoLk"
-          data-id ='${id}' 
-          data-categoryId='${categoryId}'
-            data-name = "${name}"
-           data-price= "${price}"
-           data-image = "${image[0]}"
-          ><img src="../images/logo/сирт.png" alt=""></button>
-          <button class="BUY"
-          data-id ='${id}' 
-          data-categoryId='${categoryId}'
-            data-name = "${name}"
-           data-price= "${price}"
-           data-image = "${image[0]}"
-          >BUY</button>
-        </div>
-    </div>
-</div>
-  `;
-  return element;
-};
-function eventer() {
-  const bt = document.querySelectorAll(".smallImages img");
-  const img = document.querySelector(".bigImage");
 
-  bt.forEach((elem) => {
-    elem.addEventListener("click", () => {
-      img.src = elem.src;
-    });
-  });
-}
-function selectBox() {
-  if (!main.classList.contains("unbox")) {
-    main.classList.add("unbox");
-  } else {
-    main.classList.remove("unbox");
-  }
-  if (!productInfos.classList.contains("block")) {
-    productInfos.classList.add("block");
-  } else {
-    productInfos.classList.remove("block");
-  }
-}
-const clickEleme = () => {
-  const elementProduct = document.querySelectorAll(".elemId");
-
-  window.addEventListener("hashchange", Hashchange);
-  elementProduct.forEach((elem) => {
-    const { id, type } = elem.dataset;
-    elem.addEventListener("click", () => {
-      {
-        window.location.href = `#${type}/#${id}`;
-      }
-    });
-  });
+const SortPrice = (data) => {
+  return data.sort((b, a) => a.price - b.price);
 };
