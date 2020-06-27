@@ -48,6 +48,7 @@ const GetTv = async (url) => {
       let exemple = CreateTv(item);
       tv.append(exemple);
       Basket();
+      clickEleme();
     });
   });
   await data.forEach((item) => {
@@ -56,6 +57,7 @@ const GetTv = async (url) => {
   });
 
   await Basket();
+  await clickEleme();
 };
 const filterPr = (data, id) => {
   const newData = data.filter((item) => item.categoryId === id);
@@ -64,6 +66,7 @@ const filterPr = (data, id) => {
     let lg = CreateTv(item);
     tv.append(lg);
     Basket();
+    clickEleme();
   });
 };
 const CreateTv = (item) => {
@@ -72,7 +75,7 @@ const CreateTv = (item) => {
   phon.classList.add("tv");
 
   phon.innerHTML = `
-    <div data-id ='${id}' class = 'elemProduct'>
+    <div data-id ='${id}' class = 'elemProduct elemId'  >
     <div class='imageProd'>
   <button class = 'logo'
   data-id = '${id}' 
@@ -108,7 +111,11 @@ const CreateTv = (item) => {
   return phon;
 };
 window.addEventListener("DOMContentLoaded", () => {
-  GetTv("../../API/tv.json");
+  if (body.dataset.type === "phone") {
+    GetTv("../API/phones.json");
+  } else {
+    GetTv("../../API/tv.json");
+  }
 });
 
 function Basket() {
@@ -324,3 +331,150 @@ function Basket() {
 const SortPrice = (data) => {
   return data.sort((b, a) => a.price - b.price);
 };
+
+let productInfos = document.querySelector(".productInfo");
+const main = document.querySelector(".main");
+const GetInfo = async (url, id) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const findId = await filterProducts(data, id);
+  const elem = await paintProduct(findId);
+  productInfos.innerHTML = "";
+  await productInfos.append(elem);
+  await eventer();
+  await selectBox();
+  await Basket("logoBk", "logoLk");
+
+  await BUY();
+};
+const filterProducts = (data, id) => {
+  return data.find((item) => item.id === id);
+};
+const paintProduct = (data) => {
+  const element = document.createElement("div");
+  const { price, name, id, categoryId, size, display, image } = data;
+  element.innerHTML = `
+  <div class="infProd" data-id =${id} data-categoryId =${categoryId}>
+    <div class="imagess">
+        <img src=${image[0]} alt="img" class="bigImage">
+        <div class="smallImages">
+            <img src=${image[0]} alt="log" >
+            <img src=${image[1]} alt="log" >
+            <img src=${image[2]} alt="log">
+        </div>
+    </div>
+    <div class="infos">
+        <p><span> NAME: </span>${name}</p>
+        <p><span> PRICE:</span> ${price}$</p>
+        <p><span> SIZE:</span> ${size}</p>
+        <p><span> DISPLAY:</span>${display}</p>
+        <div class="buttonss">
+         
+          <button class="BUY"
+          data-id ='${id}' 
+          data-categoryId='${categoryId}'
+            data-name = "${name}"
+           data-price= "${price}"
+           data-image = "${image[0]}"
+          >BUY</button>
+        </div>
+    </div>
+</div>
+  `;
+  return element;
+};
+function eventer() {
+  const bt = document.querySelectorAll(".smallImages img");
+  const img = document.querySelector(".bigImage");
+
+  bt.forEach((elem) => {
+    elem.addEventListener("click", () => {
+      img.src = elem.src;
+    });
+  });
+}
+function selectBox() {
+  console.log(main);
+
+  if (!main.classList.contains("unbox")) {
+    main.classList.add("unbox");
+  } else {
+    main.classList.remove("unbox");
+  }
+  if (!productInfos.classList.contains("block")) {
+    productInfos.classList.add("block");
+  } else {
+    productInfos.classList.remove("block");
+  }
+}
+
+const clickEleme = () => {
+  const elementProduct = document.querySelectorAll(".elemId");
+  console.log(elementProduct);
+
+  window.addEventListener("hashchange", Hashchange);
+  elementProduct.forEach((elem) => {
+    console.log("aa");
+
+    const { id, type } = elem.dataset;
+    elem.addEventListener("click", () => {
+      {
+        window.location.href = `#${type}/#${id}`;
+      }
+    });
+  });
+};
+const LinkProd = document.querySelectorAll(".LinkProd");
+
+LinkProd.forEach((elem) => {
+  const { type } = elem.dataset;
+  elem.addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log(type);
+
+    if (type === "phone") {
+      window.location.assign("../../cotalog/phone.html");
+    } else {
+      window.location.assign("../../cotalog/tv.html");
+    }
+  });
+});
+const fetchPost = async (data) => {
+  const dataPost = await JSON.stringify(data);
+  await fetch(url, { method: "POST", body: data });
+};
+function buy() {
+  const buy = document.querySelectorAll(".buy");
+  let fetchData = {};
+  buy.forEach((elem) => {
+    elem.addEventListener("click", () => {
+      const { id, counter } = elem.dataset;
+      fetchData = { id, counter };
+      console.log(fetchData);
+
+      // fetchPost(JSON.stringify(fetchData));
+    });
+  });
+}
+function BUY() {
+  const BUY = document.querySelector(".BUY");
+  BUY.addEventListener("click", () => {
+    const { id } = BUY.dataset;
+    console.log(id);
+
+    //fetchPost(JSON.stringify({ id }));
+  });
+}
+function Hashchange() {
+  const hash = location.hash ? location.hash.slice(1) : "";
+  const param = hash.split("/#");
+
+  if (param[0] === "phone") {
+    GetInfo("../../API/phones.json", param[1]);
+  } else if ((param[0] === "tv", param[1])) {
+    GetInfo("../../API/tv.json", param[1]);
+  } else {
+    main.classList.remove("unbox");
+    productInfos.classList.remove("block");
+  }
+}

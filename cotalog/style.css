@@ -1,6 +1,9 @@
 body {
   background-color: gray;
 }
+.unbox {
+  display: none;
+}
 .Imgelem {
   width: 200px;
 }
@@ -54,4 +57,57 @@ nav {
   background-color: transparent;
 }
 .tv {
+}
+.infProd {
+  max-width: 940px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.imagess {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.bigImage {
+  width: 90%;
+  max-height: 400px;
+  margin: 0 auto;
+}
+.smallImages img {
+  width: 80px;
+  height: 80px;
+  padding: 5px 10px;
+}
+.smallImages {
+  display: flex;
+  justify-content: center;
+}
+.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.infos p {
+  padding: 10px;
+}
+.infos span {
+  color: red;
+}
+.buttonss {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-around;
+}
+.buttonss button {
+  background-color: transparent;
+  border-color: red;
+}
+.BUY {
+  color: red;
+  border: white 2px solid;
+  padding: 10px;
 }

@@ -43,8 +43,8 @@
   },
   {
     "id": "3",
-    "categoryId": "4",
-    "name": "Lenovo A6000",
+    "categoryId": "1",
+    "name": "IPhone A6000",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     "price": 764,
     "image": [
@@ -64,7 +64,7 @@
   },
   {
     "id": "4",
-    "categoryId": "5",
+    "categoryId": "2",
     "name": "Nokia Lumia 1520",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     "price": 674,

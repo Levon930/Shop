@@ -301,6 +301,7 @@ function Basket(bt1, bt2) {
       JSON.parse(localStorage.getItem("basket")),
       selectedProd
     );
+    buy();
     clearItem(JSON.parse(localStorage.getItem("basket")), "basket");
 
     if (!selectedProd.classList.contains("block")) {
@@ -317,6 +318,7 @@ function Basket(bt1, bt2) {
       JSON.parse(localStorage.getItem("like")),
       selectedProd
     );
+    buy();
     clearItem(JSON.parse(localStorage.getItem("like")), "like");
     if (!selectedProd.classList.contains("block")) {
       selectedProd.classList.add("block");
@@ -411,6 +413,7 @@ const GetInfo = async (url, id) => {
   await eventer();
   await selectBox();
   await Basket("logoBk", "logoLk");
+  await BUY();
 };
 const filterProducts = (data, id) => {
   return data.find((item) => item.id === id);
@@ -434,20 +437,7 @@ const paintProduct = (data) => {
         <p><span> SIZE:</span> ${size}</p>
         <p><span> DISPLAY:</span>${display}</p>
         <div class="buttonss">
-          <button class=".logoBk"
-          data-id ='${id}' 
-          data-categoryId='${categoryId}'
-            data-name = "${name}"
-           data-price= "${price}"
-           data-image = "${image[0]}"
-          ><img src="../images/logo/download.png" alt=""></button>
-          <button class=".logoLk"
-          data-id ='${id}' 
-          data-categoryId='${categoryId}'
-            data-name = "${name}"
-           data-price= "${price}"
-           data-image = "${image[0]}"
-          ><img src="../images/logo/сирт.png" alt=""></button>
+         
           <button class="BUY"
           data-id ='${id}' 
           data-categoryId='${categoryId}'
@@ -496,3 +486,44 @@ const clickEleme = () => {
     });
   });
 };
+const LinkProd = document.querySelectorAll(".LinkProd");
+
+LinkProd.forEach((elem) => {
+  const { type } = elem.dataset;
+  elem.addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log(type);
+
+    if (type === "phone") {
+      window.location.assign("../../cotalog/phone.html");
+    } else {
+      window.location.assign("../../cotalog/tv.html");
+    }
+  });
+});
+const fetchPost = async (data) => {
+  const dataPost = await JSON.stringify(data);
+  await fetch(url, { method: "POST", body: data });
+};
+function buy() {
+  const buy = document.querySelectorAll(".buy");
+  let fetchData = {};
+  buy.forEach((elem) => {
+    elem.addEventListener("click", () => {
+      const { id, counter } = elem.dataset;
+      fetchData = { id, counter };
+      console.log(fetchData);
+
+      // fetchPost(JSON.stringify(fetchData));
+    });
+  });
+}
+function BUY() {
+  const BUY = document.querySelector(".BUY");
+  BUY.addEventListener("click", () => {
+    const { id } = BUY.dataset;
+    console.log(id);
+
+    //fetchPost(JSON.stringify({ id }));
+  });
+}

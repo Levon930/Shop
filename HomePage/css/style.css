@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 article {
   display: none;
@@ -310,4 +311,6 @@ html.is-animating .transition-fade {
 }
 .BUY {
   color: red;
+  border: white 2px solid;
+  padding: 10px;
 }
