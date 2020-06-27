@@ -394,8 +394,6 @@ function eventer() {
   });
 }
 function selectBox() {
-  console.log(main);
-
   if (!main.classList.contains("unbox")) {
     main.classList.add("unbox");
   } else {
