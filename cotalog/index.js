@@ -160,6 +160,7 @@ function Basket() {
       apnding.append(el);
     });
   };
+
   const creatElementBasket = (item) => {
     const { name, image, price, id, counter } = item;
 
@@ -230,6 +231,7 @@ function Basket() {
       JSON.parse(localStorage.getItem("basket")),
       selectedProd
     );
+    buy();
     clearItem(JSON.parse(localStorage.getItem("basket")), "basket");
 
     if (!selectedProd.classList.contains("block")) {
@@ -441,19 +443,7 @@ const fetchPost = async (data) => {
   const dataPost = await JSON.stringify(data);
   await fetch(url, { method: "POST", body: data });
 };
-function buy() {
-  const buy = document.querySelectorAll(".buy");
-  let fetchData = {};
-  buy.forEach((elem) => {
-    elem.addEventListener("click", () => {
-      const { id, counter } = elem.dataset;
-      fetchData = { id, counter };
-      console.log(fetchData);
 
-      // fetchPost(JSON.stringify(fetchData));
-    });
-  });
-}
 function BUY() {
   const BUY = document.querySelector(".BUY");
   BUY.addEventListener("click", () => {
@@ -476,3 +466,42 @@ function Hashchange() {
     productInfos.classList.remove("block");
   }
 }
+const fetchingValue = {};
+const buyingButton = document.querySelector(".Buying button");
+const Buying = document.querySelector(".Buying");
+function buy() {
+  console.log("l");
+
+  const buy = document.querySelectorAll(".buy");
+  let fetchData = {};
+  buy.forEach((elem) => {
+    console.log("aa");
+
+    elem.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const { id, counter } = elem.dataset;
+
+      fetchingValue.id = id;
+      fetchingValue.counter = counter;
+      console.log(fetchingValue);
+
+      if (!Buying.classList.contains("buyFlexing")) {
+        Buying.classList.add("buyFlexing");
+      } else {
+        Buying.classList.remove("buyFlexing");
+      }
+      // fetchPost(JSON.stringify(fetchData));
+    });
+  });
+}
+body.addEventListener("click", () => {
+  drobDawn.classList.remove("buyFlexing");
+});
+buyingButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  // e.stopPropagation();
+  const buyingInput = document.querySelector(".Buying input");
+  fetchingValue.email = buyingInput.value;
+  console.log(fetchingValue);
+  //fetchPost(JSON.stringify(fetchingValue))
+});

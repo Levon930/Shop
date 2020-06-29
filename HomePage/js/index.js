@@ -510,7 +510,7 @@ const buyingButton = document.querySelector(".Buying button");
 const Buying = document.querySelector(".Buying");
 function buy() {
   const buy = document.querySelectorAll(".buy");
-  let fetchData = {};
+
   buy.forEach((elem) => {
     elem.addEventListener("click", (e) => {
       e.stopPropagation();

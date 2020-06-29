@@ -114,6 +114,35 @@ nav {
 .selectedProd p {
   color: black;
 }
+.selectedProd {
+  position: relative;
+}
 .clearItem {
   background-color: black;
+}
+.Buying {
+  width: 100%;
+
+  background-color: black;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  padding: 10px 10px;
+  z-index: 10;
+  display: none;
+}
+.Buying input {
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black;
+}
+.Buying button {
+  padding: 10px;
+}
+.buyFlexing {
+  display: flex;
 }
