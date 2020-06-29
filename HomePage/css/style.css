@@ -314,3 +314,39 @@ html.is-animating .transition-fade {
   border: white 2px solid;
   padding: 10px;
 }
+.selectedProd p {
+  color: black;
+  position: relative;
+}
+.clearItem {
+  background-color: black;
+}
+.email {
+  border: black 2px;
+}
+.Buying {
+  width: 100%;
+
+  background-color: black;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  padding: 10px 10px;
+  z-index: 10;
+  display: none;
+}
+.Buying input {
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black;
+}
+.Buying button {
+  padding: 10px;
+}
+.buyFlexing {
+  display: flex;
+}

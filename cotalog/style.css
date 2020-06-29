@@ -111,3 +111,9 @@ nav {
   border: white 2px solid;
   padding: 10px;
 }
+.selectedProd p {
+  color: black;
+}
+.clearItem {
+  background-color: black;
+}

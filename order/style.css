@@ -1,73 +1,68 @@
-.content {
-  background: linear-gradient(
-    180deg,
-    rgba(27, 30, 35, 0.8) 0%,
-    rgba(27, 30, 35, 0.0661654) 48.96%,
-    rgba(27, 30, 35, 0) 69.27%
-  );
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: gray;
 }
 
-main h2 {
-  max-width: 690px;
-  text-align: center;
-  margin-left: 3%;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 57px;
-
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-
-  color: #ffffff;
-}
-main h2 span {
-}
-form {
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  -webkit-box-shadow: 10px 10px 5px 5px rgba(240, 239, 237, 1);
+  -moz-box-shadow: 10px 10px 5px 5px rgba(240, 239, 237, 1);
+  box-shadow: 10px 10px 5px 5px rgba(240, 239, 237, 1);
 }
-.form {
-  width: 48%;
-  margin-left: 3%;
+header a {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  font-size: 20xp;
+  font-weight: 900;
 }
 .dataNameUser {
   display: flex;
   flex-direction: column;
-  width: 49%;
+  margin-left: 10px;
 }
 .dataUser {
   display: flex;
-  flex-wrap: wrap;
-}
-.last {
-  margin-left: 2%;
+  flex-direction: column;
 }
 main {
-  width: 100%;
-  padding-top: 50px;
+  max-width: 940px;
+  margin: 0 auto;
+  text-align: center;
 }
-
-input,
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+form input {
+  border: white 2px solid;
+  text-align: center;
+}
+input::-webkit-input-placeholder {
+  color: white;
+}
+textarea::-webkit-input-placeholder {
+  color: white;
+}
 textarea {
-  border: 1px solid #2679bd;
+  border: white 2px solid;
+  text-align: center;
 }
-label {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 27px;
-  color: rgba(255, 255, 255, 0.4);
-}
-
 button {
-  width: 150px;
-
-  background-color: transparent;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 700;
+  margin-top: 20px;
+  padding: 10px;
+  font-weight: 900;
+  color: white;
+  border: 1px white solid;
 }
